@@ -33,6 +33,12 @@ app.get("/listAnimaux", (req,res) => {
     })
 })
 
+app.get("/listUnAnimalParLeNom/:nom", (req,res) => {
+    db.collection('creche').find({ name:req.params.nom }).toArray(function(err,docs){
+        res.json(docs)
+    })
+})
+
 app.listen(8080, ()=>console.log("ecoute sur 8080"))
 
 
